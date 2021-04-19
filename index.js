@@ -11,10 +11,13 @@ var EventEmitter = require('events').EventEmitter;
  * @param {Object} options
  * @param {string} [options.orientation=vertical] The orientation of the compare slider. `vertical` creates a vertical slider bar to compare one map on the left (map A) with another map on the right (map B). `horizontal` creates a horizontal slider bar to compare on mop on the top (map A) and another map on the bottom (map B).
  * @param {boolean} [options.mousemove=false] If `true` the compare slider will move with the cursor, otherwise the slider will need to be dragged to move.
+ * @param {Array | null} [options.wrapper=null] The wrapper of map components. The first element of this array argument refer to the wrapper of the first Mapbox GL Map;  The second element of this array argument refer to the wrapper of the second Mapbox GL Map
  * @example
  * var compare = new mapboxgl.Compare(beforeMap, afterMap, '#wrapper', {
  *   orientation: 'vertical',
- *   mousemove: true
+ *   mousemove: true,
+ *   wrapper: [document.querySelector('.before-wrapper'), document.querySelector('.after-wrapper')]
+ *   
  * });
  * @see [Swipe between maps](https://www.mapbox.com/mapbox-gl-js/example/mapbox-gl-compare/)
  */
@@ -102,10 +105,36 @@ Compare.prototype = {
     var clipB = this._horizontal
       ? 'rect(' + x + 'px, 999em, ' + this._bounds.height + 'px,0)'
       : 'rect(0, 999em, ' + this._bounds.height + 'px,' + x + 'px)';
-    
-    this._mapA.getContainer().style.clip = clipA;
-    this._mapB.getContainer().style.clip = clipB;
+
+    var wrapper = this.options.wrapper
+    var _mapAWrapper = wrapper && this._getWrapperElement(wrapper[0]);
+    var _mapBWrapper = wrapper && this._getWrapperElement(wrapper[1]);
+    if (_mapAWrapper) {
+      _mapAWrapper.style.clip = clipA
+    } else {
+      this._mapA.getContainer().style.clip = clipA;
+    }
+    if (_mapBWrapper) {
+      _mapBWrapper.style.clip = clipB
+    } else {
+      this._mapB.getContainer().style.clip = clipB;
+    }
     this.currentPosition = x;
+  },
+
+  _getWrapperElement: function(el) {
+    var wrapper = null
+    if (typeof el === 'string') {
+      var _wrapper = document.querySelector(el)
+      if (_wrapper) {
+        wrapper = _wrapper
+      } else {
+        throw new Error('Cannot find element with specified '+ el +' selector.')
+      }
+    } else if (el instanceof Element) {
+      wrapper = el
+    }
+    return el
   },
 
   _onMove: function(e) {

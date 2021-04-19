@@ -2,7 +2,8 @@
 /* global mapboxgl */
 
 require('../');
-mapboxgl.accessToken = window.localStorage.getItem('MapboxAccessToken');
+// mapboxgl.accessToken = window.localStorage.getItem('MapboxAccessToken');
+mapboxgl.accessToken = 'pk.eyJ1IjoiaGFwcGluZXNzODYiLCJhIjoiY2tmN3Y3a2x2MDYzNTJ4czY4bmdkazlsMSJ9.QakZOGI4slGaBRVUjlV9vA';
 
 var before = new mapboxgl.Map({
   container: 'before',
@@ -27,8 +28,10 @@ var options = {
 window.compare = new mapboxgl.Compare(
   before,
   after, 
-  wrapperSelector
-  // options
+  wrapperSelector,
+  {
+    wrapper: [document.querySelector('.before-wrapper'), document.querySelector('.after-wrapper')]
+  }
 );
 
 var closeButton = document.getElementById('close-button');

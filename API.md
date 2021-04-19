@@ -26,13 +26,16 @@
 -   `options` **[Object][13]** 
     -   `options.orientation` **[string][14]** The orientation of the compare slider. `vertical` creates a vertical slider bar to compare one map on the left (map A) with another map on the right (map B). `horizontal` creates a horizontal slider bar to compare on mop on the top (map A) and another map on the bottom (map B). (optional, default `vertical`)
     -   `options.mousemove` **[boolean][16]** If `true` the compare slider will move with the cursor, otherwise the slider will need to be dragged to move. (optional, default `false`)
+    -   `options.wrapper` **([Array][17] | null)** The wrapper of map components (optional, default `[]`)
 
 ### Examples
 
 ```javascript
 var compare = new mapboxgl.Compare(beforeMap, afterMap, '#wrapper', {
   orientation: 'vertical',
-  mousemove: true
+  mousemove: true,
+  wrapper: [document.querySelector('.before-wrapper'), document.querySelector('.after-wrapper')]
+  
 });
 ```
 
@@ -42,7 +45,7 @@ Set the position of the slider.
 
 #### Parameters
 
--   `x` **[number][17]** Slider position in pixels from left/top.
+-   `x` **[number][18]** Slider position in pixels from left/top.
 
 ### on
 
@@ -52,9 +55,9 @@ Adds a listener for events of a specified type.
 
 -   `type` **[string][14]** The event type to listen for; one of `slideend`.
 -   `fn`  
--   `listener` **[Function][18]** The function to be called when the event is fired.
+-   `listener` **[Function][19]** The function to be called when the event is fired.
 
-Returns **[Compare][19]** `this`
+Returns **[Compare][20]** `this`
 
 ### fire
 
@@ -65,7 +68,7 @@ Fire an event of a specified type.
 -   `type` **[string][14]** The event type to fire; one of `slideend`.
 -   `data` **[Object][13]** Data passed to the event listener.
 
-Returns **[Compare][19]** `this`
+Returns **[Compare][20]** `this`
 
 ### off
 
@@ -75,9 +78,9 @@ Removes an event listener previously added with `Compare#on`.
 
 -   `type` **[string][14]** The event type previously used to install the listener.
 -   `fn`  
--   `listener` **[Function][18]** The function previously installed as a listener.
+-   `listener` **[Function][19]** The function previously installed as a listener.
 
-Returns **[Compare][19]** `this`
+Returns **[Compare][20]** `this`
 
 [1]: #compare
 
@@ -111,8 +114,10 @@ Returns **[Compare][19]** `this`
 
 [16]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
 
-[17]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
+[17]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
 
-[18]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function
+[18]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
 
-[19]: #compare
+[19]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function
+
+[20]: #compare
