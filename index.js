@@ -134,7 +134,7 @@ Compare.prototype = {
     } else if (el instanceof Element) {
       wrapper = el
     }
-    return el
+    return wrapper
   },
 
   _onMove: function(e) {
