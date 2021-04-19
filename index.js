@@ -107,8 +107,8 @@ Compare.prototype = {
       : 'rect(0, 999em, ' + this._bounds.height + 'px,' + x + 'px)';
 
     var wrapper = this.options.wrapper
-    var _mapAWrapper = wrapper && this._getWrapperElement(wrapper[0]);
-    var _mapBWrapper = wrapper && this._getWrapperElement(wrapper[1]);
+    var _mapAWrapper = this._mapAWrapper = wrapper && this._getWrapperElement(wrapper[0]);
+    var _mapBWrapper = this._mapBWrapper = wrapper && this._getWrapperElement(wrapper[1]);
     if (_mapAWrapper) {
       _mapAWrapper.style.clip = clipA
     } else {
@@ -229,6 +229,15 @@ Compare.prototype = {
       aContainer.style.clip = null;
       aContainer.removeEventListener('mousemove', this._onMove);
     }
+
+    if (!!this._mapAWrapper) {
+      this._mapAWrapper.style.clip = null;
+    }
+
+    if (!!this._mapBWrapper) {
+      this._mapBWrapper.style.clip = null;
+    }
+
 
     var bContainer = this._mapB.getContainer();
 

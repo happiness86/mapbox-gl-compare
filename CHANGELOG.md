@@ -1,3 +1,8 @@
+v0.5.4
+---
+
+- remove compare实例时，恢复wrapper的原始大小
+
 v0.5.3
 ---
 
