@@ -26,7 +26,7 @@
 -   `options` **[Object][13]** 
     -   `options.orientation` **[string][14]** The orientation of the compare slider. `vertical` creates a vertical slider bar to compare one map on the left (map A) with another map on the right (map B). `horizontal` creates a horizontal slider bar to compare on mop on the top (map A) and another map on the bottom (map B). (optional, default `vertical`)
     -   `options.mousemove` **[boolean][16]** If `true` the compare slider will move with the cursor, otherwise the slider will need to be dragged to move. (optional, default `false`)
-    -   `options.wrapper` **([Array][17] | null)** The wrapper of map components (optional, default `[]`)
+    -   `options.wrapper` **([Array][17] | null)** The wrapper of map components. The first element of this array argument refer to the wrapper of the first Mapbox GL Map;  The second element of this array argument refer to the wrapper of the second Mapbox GL Map (optional, default `null`)
 
 ### Examples
 

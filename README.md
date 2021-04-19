@@ -1,5 +1,9 @@
-mapbox-gl-compare
+gt-mapbox-gl-compare
 ---
+
+### description
+
+在`mapbox-gl-compare`的基础上增加了额外的参数，支持对比地图的wrapper
 
 Swipe and sync between two maps
 
