@@ -1,6 +1,6 @@
 {
-  "name": "@happiness86/mapbox-gl-compare",
-  "version": "0.5.1",
+  "name": "gt-mapbox-gl-compare",
+  "version": "0.5.2",
   "description": "Swipe and sync between two maps",
   "main": "index.js",
   "directories": {
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/mapbox/mapbox-gl-compare.git"
+    "url": "https://github.com/happiness86/mapbox-gl-compare.git"
   },
   "keywords": [
     "mapbox",
